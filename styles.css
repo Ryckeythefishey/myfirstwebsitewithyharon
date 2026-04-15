@@ -26,10 +26,12 @@ p {
 }
 
 .zalgo-text {
-  font-size: 70px;
+  font-size: 80px;
   color: #fff;
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 6px;
+  font-weight: bold;
+  position: relative;
 
   text-shadow:
     0 0 5px #ff0000,
@@ -37,28 +39,70 @@ p {
     0 0 15px #ffd000,
     0 0 20px #00ffcc,
     0 0 25px #0066ff,
-    0 0 30px #9900ff;
-  
-  animation: glitch 1.5s infinite alternate;
+    0 0 30px #9900ff,
+    0 0 40px #ff00ff;
+
+  animation: glitchMove 0.3s infinite;
 }
 
-/* subtle glitch movement */
-@keyframes glitch {
+/* MAIN SHAKE */
+@keyframes glitchMove {
   0% {
     transform: translate(0px, 0px) skew(0deg);
+    filter: hue-rotate(0deg);
   }
-  25% {
-    transform: translate(-2px, 1px) skew(1deg);
+  20% {
+    transform: translate(-3px, 2px) skew(2deg);
   }
-  50% {
-    transform: translate(2px, -1px) skew(-1deg);
+  40% {
+    transform: translate(3px, -2px) skew(-2deg);
   }
-  75% {
-    transform: translate(-1px, -2px) skew(0.5deg);
+  60% {
+    transform: translate(-2px, -1px) skew(1deg);
+  }
+  80% {
+    transform: translate(2px, 3px) skew(-1deg);
   }
   100% {
-    transform: translate(1px, 2px) skew(-0.5deg);
+    transform: translate(0px, 0px) skew(0deg);
+    filter: hue-rotate(360deg);
   }
+}
+
+/* EXTRA glitch layer (ghost copy) */
+.zalgo-text::before,
+.zalgo-text::after {
+  content: "hi";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.zalgo-text::before {
+  color: #ff00ff;
+  transform: translate(-3px, 0);
+  animation: glitchTop 0.3s infinite;
+}
+
+.zalgo-text::after {
+  color: #00ffff;
+  transform: translate(3px, 0);
+  animation: glitchBottom 0.3s infinite;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 70% 0); }
+  50% { clip-path: inset(10% 0 40% 0); }
+  100% { clip-path: inset(0 0 80% 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(60% 0 0 0); }
+  50% { clip-path: inset(40% 0 10% 0); }
+  100% { clip-path: inset(70% 0 0 0); }
 }
 
 /* Game rows (CARD STYLE 🔥) */
