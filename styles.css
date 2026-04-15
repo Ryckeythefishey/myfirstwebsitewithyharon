@@ -1,60 +1,73 @@
 body {
-  background: linear-gradient(to right, #1e1e2f, #2a2a40);
-  color: white;
   font-family: Arial, sans-serif;
-  max-width: 900px;
+  background-color: #1e1e2f;
+  color: white;
+  max-width: 800px;
   margin: auto;
 }
 
-/* Headings */
-h1, h2 {
-  text-align: center;
-  text-shadow: 0 0 10px gold;
-  color: #ffd700; /* gold */
+h1 {
+  color: blue;
+  font-size: 32px;
 }
 
-/* Image */
-img {
-  display: block;
-  margin: 20px auto;
-  border-radius: 10px;
+p {
+  color: darkgray;
+  font-size: 16px;
 }
 
-/* Links */
-a {
-  color: #4da6ff;
-  text-decoration: none;
+.zalgo-text {
+  font-size: 60px;
+  color: white;
+  text-shadow:
+    0 0 5px red,
+    0 0 10px orange,
+    0 0 15px yellow,
+    -5px -5px 5px blue,
+    -10px -10px 10px indigo,
+    -15px -15px 15px violet,
+    5px 5px 5px green,
+    10px 10px 10px brown,
+    15px 15px 15px pink;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* Game rows */
 .game-row {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin: 15px 0;
-  background: #2f2f4f;
-  padding: 10px;
-  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-/* Inputs */
-input[type="text"] {
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
+.game-name {
+  min-width: 120px;
 }
 
-/* Stars */
+.rating {
+  font-size: 30px;
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.rating input {
+  display: none;
+}
+
 .rating label {
   color: lightgray;
-  transition: 0.2s;
+  cursor: pointer;
 }
 
 .rating label:hover,
-.rating label:hover ~ label {
+.rating label:hover ~label {
   color: gold;
+}
+
+.rating input:checked ~ label {
+  color: gold;
+}
+
+.reason {
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
 }
