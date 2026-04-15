@@ -4,6 +4,7 @@ body {
   font-family: Arial, sans-serif;
   max-width: 900px;
   margin: auto;
+  text-shadow: 0 0 10px gold;
 }
 
 /* Headings */
