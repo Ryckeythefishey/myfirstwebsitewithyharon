@@ -4,12 +4,12 @@ body {
   font-family: Arial, sans-serif;
   max-width: 900px;
   margin: auto;
-  text-shadow: 0 0 10px gold;
 }
 
 /* Headings */
 h1, h2 {
   text-align: center;
+  text-shadow: 0 0 10px gold;
   color: #ffd700; /* gold */
 }
 
