@@ -1,24 +1,35 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #1e1e2f;
+  background: linear-gradient(to right, #1e1e2f, #2a2a40);
   color: white;
   max-width: 800px;
   margin: auto;
 }
 
+/* Headings */
 h1 {
-  color: blue;
+  color: #4da6ff; /* nicer blue */
   font-size: 32px;
+  text-align: center;
 }
 
+h2 {
+  text-align: center;
+  color: #ffd700; /* gold */
+}
+
+/* Text */
 p {
   color: darkgray;
   font-size: 16px;
+  text-align: center;
 }
 
+/* Zalgo stays cool */
 .zalgo-text {
   font-size: 60px;
   color: white;
+  text-align: center;
   text-shadow:
     0 0 5px red,
     0 0 10px orange,
@@ -31,21 +42,38 @@ p {
     15px 15px 15px pink;
 }
 
+/* Game rows (CARD STYLE 🔥) */
 .game-row {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 10px;
+  margin: 15px 0;
+  padding: 10px;
+  background: #2f2f4f;
+  border-radius: 10px;
 }
 
+/* Inputs */
 .game-name {
   min-width: 120px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }
 
+.reason {
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* ⭐ STAR SYSTEM (UNCHANGED CORE) */
 .rating {
   font-size: 30px;
   display: inline-flex;
-  flex-direction: row-reverse;
+  flex-direction: row-reverse; /* IMPORTANT → keeps stars correct */
 }
 
 .rating input {
@@ -55,19 +83,17 @@ p {
 .rating label {
   color: lightgray;
   cursor: pointer;
+  transition: 0.2s;
 }
 
+/* Hover effect */
 .rating label:hover,
-.rating label:hover ~label {
+.rating label:hover ~ label {
   color: gold;
+  transform: scale(1.2);
 }
 
+/* Selected stars */
 .rating input:checked ~ label {
   color: gold;
-}
-
-.reason {
-  flex: 1;
-  padding: 5px;
-  font-size: 14px;
 }
