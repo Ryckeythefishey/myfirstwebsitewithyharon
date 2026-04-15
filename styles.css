@@ -25,21 +25,40 @@ p {
   text-align: center;
 }
 
-/* Zalgo stays cool */
 .zalgo-text {
-  font-size: 60px;
-  color: white;
+  font-size: 70px;
+  color: #fff;
   text-align: center;
+  letter-spacing: 3px;
+
   text-shadow:
-    0 0 5px red,
-    0 0 10px orange,
-    0 0 15px yellow,
-    -5px -5px 5px blue,
-    -10px -10px 10px indigo,
-    -15px -15px 15px violet,
-    5px 5px 5px green,
-    10px 10px 10px brown,
-    15px 15px 15px pink;
+    0 0 5px #ff0000,
+    0 0 10px #ff6a00,
+    0 0 15px #ffd000,
+    0 0 20px #00ffcc,
+    0 0 25px #0066ff,
+    0 0 30px #9900ff;
+  
+  animation: glitch 1.5s infinite alternate;
+}
+
+/* subtle glitch movement */
+@keyframes glitch {
+  0% {
+    transform: translate(0px, 0px) skew(0deg);
+  }
+  25% {
+    transform: translate(-2px, 1px) skew(1deg);
+  }
+  50% {
+    transform: translate(2px, -1px) skew(-1deg);
+  }
+  75% {
+    transform: translate(-1px, -2px) skew(0.5deg);
+  }
+  100% {
+    transform: translate(1px, 2px) skew(-0.5deg);
+  }
 }
 
 /* Game rows (CARD STYLE 🔥) */
