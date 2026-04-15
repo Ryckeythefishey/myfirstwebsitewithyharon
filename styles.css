@@ -69,6 +69,8 @@ p {
 }
 
 body {
-  background: linear-gradient(to right, #1e1e2f, #3a3a6a);
+  background-color: #1e1e2f;
   color: white;
+  max-width: 800px;
+  margin: auto;
 }
