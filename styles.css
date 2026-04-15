@@ -27,7 +27,7 @@ p {
 }
 
 /* =========================
-   ZALGO GLITCH (CODE / RAINBOW)
+   ZALGO: CONTAINMENT BREACH GLITCH
    ========================= */
 
 .zalgo-wrap {
@@ -38,78 +38,79 @@ p {
 
 /* shared line style */
 .zalgo-line {
-  font-size: 70px;
+  font-size: 80px;
   font-weight: 900;
-  letter-spacing: 8px;
+  letter-spacing: 10px;
   text-transform: uppercase;
   position: relative;
 }
 
-/* TOP = CODE */
+/* TOP: CODE (stable but hostile) */
 .top {
-  color: white;
-  animation: glitchFast 0.15s infinite;
+  color: #ffffff;
+  animation: codeGlitch 0.12s infinite;
   text-shadow:
-    0 0 10px #ff0000,
-    0 0 20px #ff00ff;
+    0 0 6px #ff0033,
+    0 0 12px #ff00ff,
+    0 0 20px #00ffff;
 }
 
-/* BOTTOM = RAINBOW */
+/* BOTTOM: RAINBOW (unstable system layer) */
 .bottom {
-  color: #fff;
-  animation: glitchSlow 0.4s infinite;
+  color: #ffffff;
+  animation: rainbowGlitch 0.25s infinite;
   text-shadow:
-    0 0 10px #00ffff,
-    0 0 20px #0066ff,
-    0 0 30px #ff00ff;
+    0 0 8px #00ffff,
+    0 0 16px #0066ff,
+    0 0 24px #ff00ff,
+    0 0 32px #00ff88;
 }
 
-/* CONNECTING “ERROR STRINGS” */
+/* “BREACH FIELD” BETWEEN THEM (NOT WIRES, MORE LIKE REALITY GLITCH) */
 .zalgo-wrap::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 35px;
-  width: 2px;
-  height: 90px;
+  width: 300px;
+  height: 120px;
   transform: translateX(-50%);
   pointer-events: none;
+
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,0,0,0.25), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(0,255,255,0.25), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255,0,255,0.2), transparent 50%);
+
+  filter: blur(2px);
+  animation: breachPulse 0.18s infinite;
   opacity: 0.8;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 0, 0, 0.9),
-    rgba(0, 255, 255, 0.9),
-    rgba(255, 0, 255, 0.6)
-  );
-
-  filter: blur(0.4px);
-  animation: stringGlitch 0.12s infinite;
 }
 
-/* FAST GLITCH (top line) */
-@keyframes glitchFast {
-  0%   { transform: translate(0px,0px) skew(0deg); }
-  25%  { transform: translate(-3px,1px) skew(2deg); }
-  50%  { transform: translate(3px,-2px) skew(-2deg); }
-  75%  { transform: translate(-2px,2px) skew(1deg); }
-  100% { transform: translate(0px,0px) skew(0deg); }
+/* CODE GLITCH (aggressive micro jitter) */
+@keyframes codeGlitch {
+  0%   { transform: translate(0,0) skew(0deg); }
+  20%  { transform: translate(-3px,1px) skew(2deg); }
+  40%  { transform: translate(3px,-2px) skew(-2deg); }
+  60%  { transform: translate(-2px,-1px) skew(1deg); }
+  80%  { transform: translate(2px,2px) skew(-1deg); }
+  100% { transform: translate(0,0) skew(0deg); }
 }
 
-/* SLOW GLITCH (bottom line) */
-@keyframes glitchSlow {
-  0%   { transform: translate(0px,0px); filter: hue-rotate(0deg); }
-  50%  { transform: translate(1px,-1px); filter: hue-rotate(180deg); }
-  100% { transform: translate(0px,0px); filter: hue-rotate(360deg); }
+/* RAINBOW GLITCH (phase-shifting instability) */
+@keyframes rainbowGlitch {
+  0%   { transform: translate(0,0); filter: hue-rotate(0deg); }
+  25%  { transform: translate(2px,-2px); filter: hue-rotate(90deg); }
+  50%  { transform: translate(-2px,2px); filter: hue-rotate(180deg); }
+  75%  { transform: translate(1px,1px); filter: hue-rotate(270deg); }
+  100% { transform: translate(0,0); filter: hue-rotate(360deg); }
 }
 
-/* STRING GLITCH */
-@keyframes stringGlitch {
-  0%   { transform: translateX(-50%) translateY(0px); opacity: 0.4; }
-  25%  { transform: translateX(-52%) translateY(2px); opacity: 1; }
-  50%  { transform: translateX(-48%) translateY(-3px); opacity: 0.6; }
-  75%  { transform: translateX(-51%) translateY(1px); opacity: 0.9; }
-  100% { transform: translateX(-50%) translateY(0px); opacity: 0.5; }
+/* BREACH FIELD PULSE */
+@keyframes breachPulse {
+  0%   { transform: translateX(-50%) scale(1); opacity: 0.5; }
+  50%  { transform: translateX(-50%) scale(1.05); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
 }
 
 /* =========================
@@ -159,47 +160,4 @@ p {
 
 .rating input:checked ~ label {
   color: gold;
-}
-
-/* =========================
-   CRT EFFECT
-   ========================= */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-
-  animation: flicker 0.15s infinite;
-  opacity: 0.4;
-}
-
-@keyframes flicker {
-  0% { opacity: 0.35; }
-  50% { opacity: 0.45; }
-  100% { opacity: 0.3; }
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9998;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0,255,0,0.05),
-    rgba(0,0,0,0.4)
-  );
 }
