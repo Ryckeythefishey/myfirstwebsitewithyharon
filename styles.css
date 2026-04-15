@@ -1,73 +1,59 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1e1e2f;
+  background: linear-gradient(to right, #1e1e2f, #2a2a40);
   color: white;
-  max-width: 800px;
+  font-family: Arial, sans-serif;
+  max-width: 900px;
   margin: auto;
 }
 
-h1 {
-  color: blue;
-  font-size: 32px;
+/* Headings */
+h1, h2 {
+  text-align: center;
+  color: #ffd700; /* gold */
 }
 
-p {
-  color: darkgray;
-  font-size: 16px;
+/* Image */
+img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
-.zalgo-text {
-  font-size: 60px;
-  color: white;
-  text-shadow:
-    0 0 5px red,
-    0 0 10px orange,
-    0 0 15px yellow,
-    -5px -5px 5px blue,
-    -10px -10px 10px indigo,
-    -15px -15px 15px violet,
-    5px 5px 5px green,
-    10px 10px 10px brown,
-    15px 15px 15px pink;
+/* Links */
+a {
+  color: #4da6ff;
+  text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+/* Game rows */
 .game-row {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 10px;
+  margin: 15px 0;
+  background: #2f2f4f;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.game-name {
-  min-width: 120px;
+/* Inputs */
+input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }
 
-.rating {
-  font-size: 30px;
-  display: inline-flex;
-  flex-direction: row-reverse;
-}
-
-.rating input {
-  display: none;
-}
-
+/* Stars */
 .rating label {
   color: lightgray;
-  cursor: pointer;
+  transition: 0.2s;
 }
 
 .rating label:hover,
-.rating label:hover ~label {
+.rating label:hover ~ label {
   color: gold;
-}
-
-.rating input:checked ~ label {
-  color: gold;
-}
-
-.reason {
-  flex: 1;
-  padding: 5px;
-  font-size: 14px;
 }
