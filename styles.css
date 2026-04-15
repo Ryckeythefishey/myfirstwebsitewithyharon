@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: blue;
+  font-size: 32px;
+}
+
+p {
+  color: darkgray;
+  font-size: 16px;
+}
+
+.zalgo-text {
+  font-size: 60px;
+  color: white;
+  text-shadow:
+    0 0 5px red,
+    0 0 10px orange,
+    0 0 15px yellow,
+    -5px -5px 5px blue,
+    -10px -10px 10px indigo,
+    -15px -15px 15px violet,
+    5px 5px 5px green,
+    10px 10px 10px brown,
+    15px 15px 15px pink;
+}
+
+.game-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.game-name {
+  min-width: 120px;
+}
+
+.rating {
+  font-size: 30px;
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  color: lightgray;
+  cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~label {
+  color: gold;
+}
+
+.rating input:checked ~ label {
+  color: gold;
+}
+
+.reason {
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+}
