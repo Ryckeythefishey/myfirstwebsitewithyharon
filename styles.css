@@ -67,3 +67,8 @@ p {
   padding: 5px;
   font-size: 14px;
 }
+
+body {
+  background: linear-gradient(to right, #1e1e2f, #3a3a6a);
+  color: white;
+}
