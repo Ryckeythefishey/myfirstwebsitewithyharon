@@ -150,7 +150,15 @@ body::before {
     text-shadow: -3px 0 #ff0033;
     mix-blend-mode: screen;
 }
-
+#clock {
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    margin-top: 5px;
+    color: #66b3ff;
+    text-shadow: 0 0 8px rgba(102, 179, 255, 0.5);
+    letter-spacing: 2px;
+}
 body::after {
     content: "";
     position: fixed;
