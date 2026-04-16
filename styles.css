@@ -150,6 +150,7 @@ body::before {
     text-shadow: -3px 0 #ff0033;
     mix-blend-mode: screen;
 }
+
 #clock {
     text-align: center;
     width: 100%;
@@ -159,6 +160,7 @@ body::before {
     text-shadow: 0 0 8px rgba(102, 179, 255, 0.5);
     letter-spacing: 2px;
 }
+
 body::after {
     content: "";
     position: fixed;
@@ -191,6 +193,49 @@ body::after {
     }
 }
 
+.yharon-img {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    width: 120px;
+    /* adjust size */
+    height: auto;
+
+    z-index: 5;
+    /* stays above background but below important UI if needed */
+    pointer-events: none;
+    /* so it doesn’t block clicks */
+}
+
+.calamity-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.calamity-link img {
+    width: 400px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 76, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.calamity-link img:hover {
+    transform: scale(1.05);
+}
+
+.calamity-link a {
+    text-align: center;
+}
+
+a[href="https://calamitymod.wiki.gg/"] {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+}
+
 .zalgo-line::after {
     content: attr(data-text);
     position: absolute;
@@ -218,22 +263,20 @@ body::after {
     background: url("fatal_error_sans.png") center / contain no-repeat;
     pointer-events: none;
 
-    opacity: 0.015; /* base hidden state */
+    opacity: 0.015;
+    /* base hidden state */
     z-index: 0;
 
     filter:
-        blur(1.5px)
-        contrast(1.8)
-        brightness(0.6)
-        saturate(0)
-        drop-shadow(0 0 12px rgba(255, 0, 76, 0.25));
+        blur(1.5px) contrast(1.8) brightness(0.6) saturate(0) drop-shadow(0 0 12px rgba(255, 0, 76, 0.25));
 
     transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
 /* when "active" (mouse stopped) */
 .fatal-silhouette.revealed {
-    opacity: 0.05; /* your max “allowed” visibility */
+    opacity: 0.05;
+    /* your max “allowed” visibility */
     transform: scale(1.02);
 }
 
