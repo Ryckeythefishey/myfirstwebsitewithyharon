@@ -1,11 +1,13 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #1e1e2f, #2a2a40);
   color: white;
   max-width: 800px;
   margin: auto;
   position: relative;
-  background-image: url("fuke dishron.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-image: url("fuke dishron.png"), linear-gradient(to right, #1e1e2f, #2a2a40);
+  image-rendering: pixelated;
 }
 
 /* Headings */
