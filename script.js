@@ -13,3 +13,23 @@ function updateClock() {
 updateClock();
 
 setInterval(updateClock, 1000);
+
+let timer;
+const fatal = document.querySelector(".fatal-silhouette");
+
+function hideFatal() {
+    fatal.classList.remove("revealed");
+}
+
+function showFatal() {
+    fatal.classList.add("revealed");
+}
+
+document.addEventListener("mousemove", () => {
+    hideFatal();
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+        showFatal();
+    }, 1200);
+});
