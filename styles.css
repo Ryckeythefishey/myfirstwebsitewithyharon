@@ -176,6 +176,24 @@ body::after {
     animation: pulseHaze 4s infinite;
 }
 
+.calamity-link {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.calamity-link img {
+    width: 300px;
+    /* or bigger if you want */
+    height: auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calamity-link img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px #ff004c);
+}
+
 @keyframes pulseHaze {
     0% {
         opacity: 0.2;
@@ -199,13 +217,9 @@ body::after {
     left: 10px;
 
     width: 120px;
-    /* adjust size */
     height: auto;
 
     z-index: 5;
-    /* stays above background but below important UI if needed */
-    pointer-events: none;
-    /* so it doesn’t block clicks */
 }
 
 .calamity-link {
