@@ -1,32 +1,64 @@
 body {
-  font-family: Arial, sans-serif;
-  color: white;
-  max-width: 800px;
-  margin: auto;
-  position: relative;
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-image: url("fuke dishron.png"), linear-gradient(to right, #1e1e2f, #2a2a40);
-  image-rendering: pixelated;
+    font-family: Arial, sans-serif;
+    color: #f1f1f1;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.75)),
+        url("fuke_dishron.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+ul li a {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
 /* Headings */
 h1 {
-  color: #4da6ff;
-  font-size: 32px;
-  text-align: center;
+    color: #4da6ff;
+    font-size: 32px;
+    text-align: center;
 }
 
 h2 {
-  text-align: center;
-  color: #ffd700;
+    text-align: center;
+    color: #ffd700;
 }
 
 /* Text */
 p {
-  color: darkgray;
-  font-size: 16px;
-  text-align: center;
+    color: #d6d6d6;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+a {
+    color: #66b3ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #66b3ff;
+    text-decoration: underline;
 }
 
 /* =========================
@@ -34,140 +66,609 @@ p {
    ========================= */
 
 .zalgo-wrap {
-  position: relative;
-  text-align: center;
-  margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: visible;
 }
 
 /* shared line style */
 .zalgo-line {
-  font-size: 80px;
-  font-weight: 900;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  position: relative;
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    position: relative;
+    display: block;
+    line-height: 1;
+    overflow: visible;
+
+    animation: baseGlitchShift 0.12s infinite steps(2, end);
+}
+
+.zalgo-line::before,
+.zalgo-line::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
 }
 
 /* TOP: CODE (stable but hostile) */
 .top {
-  color: #ffffff;
-  animation: codeGlitch 0.12s infinite;
-  text-shadow:
-    0 0 6px #ff0033,
-    0 0 12px #ff00ff,
-    0 0 20px #00ffff;
+    color: #ffffff;
+    animation: codeGlitch 0.08s infinite;
+
+    text-shadow:
+        0 0 4px #00e5ff,
+        0 0 6px #ff004c,
+        0 0 6px #b400ff,
+        0 0 4px #00ff9d;
+
+    position: relative;
+    z-index: 2;
 }
+
+
 
 /* BOTTOM: RAINBOW (unstable system layer) */
 .bottom {
-  color: #ffffff;
-  animation: rainbowGlitch 0.25s infinite;
-  text-shadow:
-    0 0 8px #00ffff,
-    0 0 16px #0066ff,
-    0 0 24px #ff00ff,
-    0 0 32px #00ff88;
+    color: #f8f8f8;
+    animation: rainbowGlitch 0.22s infinite;
+
+    text-shadow:
+        2px 0 #00e5ff,
+        -2px 0 #ff004c,
+        0 2px #b400ff,
+        0 -2px #00ff9d,
+        1px 1px #ffd700;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 2px,
+            transparent 4px);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+    animation: scanFlicker 0.15s infinite;
+}
+
+.zalgo-line::before {
+    color: #ff0033;
+    z-index: -1;
+    animation: glitchSliceA 0.12s infinite steps(2, end);
+    text-shadow: -3px 0 #ff0033;
+    mix-blend-mode: screen;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(255, 0, 76, 0.08),
+            transparent 60%);
+
+    mix-blend-mode: screen;
+    animation: pulseHaze 4s infinite;
+}
+
+@keyframes pulseHaze {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.35;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+}
+
+.zalgo-line::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
+
+    color: #ffffff;
+    z-index: -2;
+    opacity: 0.8;
+
+    animation: glitchRainbowEscape 0.18s infinite steps(2, end);
+
+    text-shadow:
+        4px 0 #ff0033,
+        -4px 0 #00ff88,
+        0 4px #ff00ff,
+        0 -4px #ffd700;
+}
+
+.fatal-silhouette {
+    position: fixed;
+    inset: 0;
+    background: url("fatal_error_sans.png") center / contain no-repeat;
+    pointer-events: none;
+
+    opacity: 0.015; /* base hidden state */
+    z-index: 0;
+
+    filter:
+        blur(1.5px)
+        contrast(1.8)
+        brightness(0.6)
+        saturate(0)
+        drop-shadow(0 0 12px rgba(255, 0, 76, 0.25));
+
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+/* when "active" (mouse stopped) */
+.fatal-silhouette.revealed {
+    opacity: 0.05; /* your max “allowed” visibility */
+    transform: scale(1.02);
+}
+
+@keyframes fatalPresence {
+    0% {
+        opacity: 0.015;
+        transform: scale(1) translate(0, 0);
+    }
+
+    50% {
+        opacity: 0.05;
+        transform: scale(1.02) translate(2px, -2px);
+    }
+
+    100% {
+        opacity: 0.02;
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+@keyframes silhouetteFlicker {
+    0% {
+        opacity: 0.05;
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.09;
+        transform: scale(1.01);
+        filter: hue-rotate(20deg);
+    }
+
+    70% {
+        opacity: 0.03;
+        transform: scale(1);
+        filter: hue-rotate(-10deg);
+    }
+
+    100% {
+        opacity: 0.06;
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes scanFlicker {
+    0% {
+        opacity: 0.15;
+        transform: translateY(0px);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: translateY(1px);
+    }
+
+    100% {
+        opacity: 0.15;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes glitchRainbowEscape {
+    0% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+
+    15% {
+        transform: translate(-8px, -2px);
+        clip-path: inset(10% 0 70% 0);
+    }
+
+    30% {
+        transform: translate(10px, 3px);
+        clip-path: inset(60% 0 10% 0);
+    }
+
+    45% {
+        transform: translate(-12px, 1px);
+        clip-path: inset(0 0 80% 0);
+    }
+
+    60% {
+        transform: translate(14px, -3px);
+        clip-path: inset(30% 0 30% 0);
+    }
+
+    75% {
+        transform: translate(-6px, 4px);
+        clip-path: inset(70% 0 10% 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 /* “BREACH FIELD” BETWEEN THEM (NOT WIRES, MORE LIKE REALITY GLITCH) */
-.zalgo-wrap::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 35px;
-  width: 300px;
-  height: 120px;
-  transform: translateX(-50%);
-  pointer-events: none;
+@keyframes glitchEscape {
+    0% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
 
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,0,0,0.25), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(0,255,255,0.25), transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(255,0,255,0.2), transparent 50%);
+    10% {
+        transform: translate(-10px, -3px);
+        clip-path: inset(20% 0 60% 0);
+    }
 
-  filter: blur(2px);
-  animation: breachPulse 0.18s infinite;
-  opacity: 0.8;
+    25% {
+        transform: translate(20px, 2px);
+        clip-path: inset(60% 0 10% 0);
+    }
+
+    40% {
+        transform: translate(-25px, -5px);
+        clip-path: inset(0 0 80% 0);
+    }
+
+    55% {
+        transform: translate(30px, 4px);
+        clip-path: inset(30% 0 30% 0);
+    }
+
+    70% {
+        transform: translate(-15px, 6px);
+        clip-path: inset(70% 0 10% 0);
+    }
+
+    85% {
+        transform: translate(18px, -4px);
+        clip-path: inset(10% 0 70% 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes baseGlitchShift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 1px);
+    }
+
+    40% {
+        transform: translate(3px, -2px);
+    }
+
+    60% {
+        transform: translate(-1px, -1px);
+    }
+
+    80% {
+        transform: translate(2px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes glitchSliceA {
+    0% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+
+    10% {
+        transform: translate(-6px, -2px);
+        clip-path: inset(10% 0 70% 0);
+    }
+
+    25% {
+        transform: translate(-2px, 3px);
+        clip-path: inset(60% 0 10% 0);
+    }
+
+    40% {
+        transform: translate(-8px, 0px);
+        clip-path: inset(30% 0 40% 0);
+    }
+
+    60% {
+        transform: translate(-3px, -3px);
+        clip-path: inset(0 0 80% 0);
+    }
+
+    80% {
+        transform: translate(-5px, 2px);
+        clip-path: inset(70% 0 10% 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes baseFlicker {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    21% {
+        opacity: 0.3;
+    }
+
+    22% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+
+    51% {
+        opacity: 0.4;
+    }
+
+    52% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes glitchLeft {
+    0% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+
+    20% {
+        transform: translate(-4px, -2px);
+        clip-path: inset(10% 0 60% 0);
+    }
+
+    40% {
+        transform: translate(-2px, 2px);
+        clip-path: inset(40% 0 20% 0);
+    }
+
+    60% {
+        transform: translate(-6px, 1px);
+        clip-path: inset(0 0 80% 0);
+    }
+
+    80% {
+        transform: translate(-3px, -1px);
+        clip-path: inset(70% 0 10% 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes glitchRight {
+    0% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+
+    20% {
+        transform: translate(4px, 2px);
+        clip-path: inset(60% 0 10% 0);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+        clip-path: inset(20% 0 40% 0);
+    }
+
+    60% {
+        transform: translate(6px, -1px);
+        clip-path: inset(80% 0 0 0);
+    }
+
+    80% {
+        transform: translate(3px, 1px);
+        clip-path: inset(10% 0 70% 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 /* CODE GLITCH (aggressive micro jitter) */
 @keyframes codeGlitch {
-  0%   { transform: translate(0,0) skew(0deg); }
-  20%  { transform: translate(-3px,1px) skew(2deg); }
-  40%  { transform: translate(3px,-2px) skew(-2deg); }
-  60%  { transform: translate(-2px,-1px) skew(1deg); }
-  80%  { transform: translate(2px,2px) skew(-1deg); }
-  100% { transform: translate(0,0) skew(0deg); }
+    0% {
+        transform: translate(0, 0) skew(0deg);
+    }
+
+    20% {
+        transform: translate(-3px, 1px) skew(2deg);
+    }
+
+    40% {
+        transform: translate(3px, -2px) skew(-2deg);
+    }
+
+    60% {
+        transform: translate(-2px, -1px) skew(1deg);
+    }
+
+    80% {
+        transform: translate(2px, 2px) skew(-1deg);
+    }
+
+    100% {
+        transform: translate(0, 0) skew(0deg);
+    }
 }
 
 /* RAINBOW GLITCH (phase-shifting instability) */
 @keyframes rainbowGlitch {
-  0%   { transform: translate(0,0); filter: hue-rotate(0deg); }
-  25%  { transform: translate(2px,-2px); filter: hue-rotate(90deg); }
-  50%  { transform: translate(-2px,2px); filter: hue-rotate(180deg); }
-  75%  { transform: translate(1px,1px); filter: hue-rotate(270deg); }
-  100% { transform: translate(0,0); filter: hue-rotate(360deg); }
+    0% {
+        transform: translate(0, 0);
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        transform: translate(2px, -2px);
+        filter: hue-rotate(90deg);
+    }
+
+    50% {
+        transform: translate(-2px, 2px);
+        filter: hue-rotate(180deg);
+    }
+
+    75% {
+        transform: translate(1px, 1px);
+        filter: hue-rotate(270deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        filter: hue-rotate(360deg);
+    }
 }
 
 /* BREACH FIELD PULSE */
 @keyframes breachPulse {
-  0%   { transform: translateX(-50%) scale(1); opacity: 0.5; }
-  50%  { transform: translateX(-50%) scale(1.05); opacity: 1; }
-  100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.4;
+    }
 }
 
 /* =========================
-   INPUTS
+   INPUTS (FIXED & UNIFIED)
    ========================= */
 
-.game-name {
-  min-width: 120px;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
+.game-name,
+.reason {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    flex: 1;
+    min-width: 120px;
 }
 
-.reason {
-  flex: 1;
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: none;
-  width: fit-content;
+.game-name::placeholder,
+.reason::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
+
+.game-name:focus,
+.reason:focus {
+    border: 1px solid #66b3ff;
+    box-shadow: 0 0 8px rgba(102, 179, 255, 0.4);
+}
+
 /* =========================
    STAR RATING
    ========================= */
 
 .rating {
-  font-size: 30px;
-  display: inline-flex;
-  flex-direction: row-reverse;
+    font-size: 30px;
+    display: inline-flex;
+    flex-direction: row-reverse;
 }
 
 .rating input {
-  display: none;
+    display: none;
 }
 
 .rating label {
-  color: lightgray;
-  cursor: pointer;
-  transition: 0.2s;
+    color: lightgray;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .rating label:hover,
-.rating label:hover ~ label {
-  color: gold;
-  transform: scale(1.2);
+.rating label:hover~label {
+    color: gold;
+    transform: scale(1.2);
 }
 
-.rating input:checked ~ label {
-  color: gold;
+.rating input:checked~label {
+    color: gold;
 }
 
 .game-row {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 }
