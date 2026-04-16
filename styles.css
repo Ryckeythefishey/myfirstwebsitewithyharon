@@ -161,3 +161,6 @@ p {
 .rating input:checked ~ label {
   color: gold;
 }
+.game-row{
+  display: flex;
+}
