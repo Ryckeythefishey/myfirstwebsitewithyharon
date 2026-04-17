@@ -40,6 +40,73 @@ h2 {
     color: #ffd700;
 }
 
+.link-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.link-card {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.link-box img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.link-box {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.link-box img {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.2s;
+}
+
+.link-box img:hover {
+    transform: scale(1.1);
+}
+
+.link-box span {
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.link-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    transition: transform 0.2s;
+}
+
+.link-card img:hover {
+    transform: scale(1.1);
+}
+
+.link-card p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
 /* Text */
 p {
     color: #d6d6d6;
@@ -152,11 +219,14 @@ body::before {
 }
 
 #clock {
-    text-align: center;
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    text-align: right;
     width: 100%;
     font-size: 22px;
     margin-top: 5px;
-    color: #66b3ff;
+    color: #ffffff;
     text-shadow: 0 0 8px rgba(102, 179, 255, 0.5);
     letter-spacing: 2px;
 }
@@ -178,7 +248,9 @@ body::after {
 
 .calamity-link {
     text-align: center;
-    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
 }
 
 .calamity-link img {
@@ -211,6 +283,11 @@ body::after {
     }
 }
 
+@font-face {
+    font-family: "dmdokuro";
+    src: url("./Flexure-Regular.otf") format("opentype");
+}
+
 .yharon-img {
     position: fixed;
     top: 10px;
@@ -224,9 +301,17 @@ body::after {
 
 .calamity-link {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin: 20px 0;
+}
+
+.THECALAMITYMOD {
+    font-family: "dmdokuro", sans-serif;
+    font-size: 69px;
+
+    background: linear-gradient(#a43903ba, #5a3c32, #40222e, #1b171f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .calamity-link img {
@@ -240,14 +325,10 @@ body::after {
     transform: scale(1.05);
 }
 
-.calamity-link a {
-    text-align: center;
-}
-
 a[href="https://calamitymod.wiki.gg/"] {
     display: block;
     text-align: center;
-    margin: 10px auto;
+    margin: 12px;
 }
 
 .zalgo-line::after {
@@ -289,7 +370,7 @@ a[href="https://calamitymod.wiki.gg/"] {
 
 /* when "active" (mouse stopped) */
 .fatal-silhouette.revealed {
-    opacity: 0.05;
+    opacity: 0.03;
     /* your max “allowed” visibility */
     transform: scale(1.02);
 }
