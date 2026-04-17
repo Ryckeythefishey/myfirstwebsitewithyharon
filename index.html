@@ -4,40 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>Calamity</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="fatal-silhouette"></div>
-    <h1 id="steckbrief">My Profile</h1>
-    <a href="yharon.html">
+    <a href="yharon.html" onclick="startMusic()">
         <img class="yharon-img"
             src="https://calamitymod.wiki.gg/es/images/thumb/4/45/Jungle_Dragon%2C_Yharon.png/280px-Jungle_Dragon%2C_Yharon.png"
             alt="yharon">
     </a>
     <div class="calamity-link">
-        <a href="https://calamitymod.wiki.gg/" target="_blank">
+        <h1 class="THECALAMITYMOD">The</h1>
+        <a href="https://calamitymod.wiki.gg/" id="Title" target="_blank">
             <img src="calamity.png" alt="Calamity Wiki">
         </a>
+        <h1 class="THECALAMITYMOD"> Mod</h1>
     </div>
     <h2>Table of Contents</h2>
     <ul>
-        <li><a href="#steckbrief">Profile</a></li>
-        <li><a href="#zeit">Time</a></li>
-        <li><a href="#spiele">My Overview</a></li>
+        <li><a href="#Introduction">The Mod</a></li>
+        <li><a href="#spiele">Boss Ratings</a></li>
+        <li><a href="#links">Links</a></li>
     </ul>
-    <h2 id="zeit">Current Time:</h2>
     <div id="clock"></div>
-    <h2>Personal Information</h2>
-    <div class="zalgo-wrap">
-        <div class="zalgo-line top" data-text="fuke">fuke</div>
-        <div class="zalgo-line bottom" data-text="dishron">dishron</div>
+    <h2 id="Introduction">The Mod</h2>
+    <p>The Calamity Mod is a large content mod for Terraria which adds many hours of endgame content and dozens of
+        enemies and bosses dispersed throughout the vanilla game's progression. The Calamity Mod also features several
+        harder difficulty modes, five new biomes and new structures, a new class, more than fifty new songs, over fifty
+        recipes for previously uncraftable vanilla items, and other assorted changes to vanilla gameplay.</p>
+    <h2 id="links">Links</h2>
+
+    <div class="link-container">
+
+        <a href="bosses.html" class="link-box">
+            <img src="https://i.pinimg.com/originals/3f/6a/1d/3f6a1df98d9da28a673366b2dae3b282.gif">
+            <span>Bosses</span>
+        </a>
+
+        <a href="enemies.html" class="link-box">
+            <img src="https://calamitymod.wiki.gg/images/Cnidrion.png?4dea57">
+            <span>Enemies</span>
+        </a>
+
+        <a href="items.html" class="link-box">
+            <img src="https://calamitymod.wiki.gg/images/Murasama.gif?4849e4">
+            <span>Items</span>
+        </a>
+
     </div>
-    <h1 id="spiele">My Overview</h1>
+
+    <h1 id="spiele">Boss Ratings</h1>
     <div class="game-row">
-        <input type="text" class="game-name" placeholder="Game name">
+        <input type="text" class="game-name" placeholder="Boss name">
 
         <div class="rating">
             <input type="radio" id="g1-5" name="g1"><label for="g1-5">&#9733;</label>
@@ -50,7 +71,7 @@
         <input type="text" class="reason" placeholder="Why I like it">
     </div>
     <div class="game-row">
-        <input type="text" class="game-name" placeholder="Game name">
+        <input type="text" class="game-name" placeholder="Boss name">
 
         <div class="rating">
             <input type="radio" id="a1-5" name="a1"><label for="a1-5">&#9733;</label>
@@ -63,7 +84,7 @@
         <input type="text" class="reason" placeholder="Why I like it">
     </div>
     <div class="game-row">
-        <input type="text" class="game-name" placeholder="Game name">
+        <input type="text" class="game-name" placeholder="Boss name">
 
         <div class="rating">
             <input type="radio" id="u1-5" name="u1"><label for="u1-5">&#9733;</label>
@@ -75,15 +96,22 @@
 
         <input type="text" class="reason" placeholder="Why I like it">
     </div>
-
+    <div class="zalgo-wrap">
+        <div class="zalgo-line top" data-text="fuke">fuke</div>
+        <div class="zalgo-line bottom" data-text="dishron">dishron</div>
+    </div>
     <p>
         This website was created during HTML class.
         It represents my personal profile (as if) and shows the basics of HTML.
     </p>
 
+    <script>
+        function startMusic() {
+            localStorage.setItem("playMusic", "true");
+        }
+    </script>
+
     <script src="script.js"></script>
-    <script src="script.js"></script>
-</body>
 </body>
 
 </html>
